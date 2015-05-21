@@ -1,0 +1,11 @@
+---
+applications:
+- name: <YOUR INITIALS>-cities-service
+  memory: 512M
+  instances: 1
+  path: build/libs/cities-service-0.0.1-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  timeout: 180
+  services: [ <YOUR INITIALS>-cities-db ]
+  env:
+    SPRING_PROFILES_ACTIVE: cloud

@@ -1,0 +1,14 @@
+.env
+.classpath
+.project
+.settings
+.gradle
+build/
+bin/
+local/
+
+.vagrant
+.DS_Store
+
+# Ignore Gradle GUI config
+gradle-app.setting

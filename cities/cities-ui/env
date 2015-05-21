@@ -1,0 +1,8 @@
+export CF_SYSTEM_DOMAIN=
+export CF_APPS_DOMAIN=
+export CF_USER=
+export CF_ORG=
+export CF_SPACE=
+export CF_APP=cities-ui
+export CF_JAR=build/libs/cities-ui.jar
+export CF_MANIFEST=manifest.yml
