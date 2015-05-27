@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Check App</title>
+<script type="text/javascript">
+	
+	function getVersion(){
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", "/version", false);
+		xmlHttp.send();
+		return xmlHttp.responseText;
+	}
+	
+	function addVersion(timeString){
+		var div = document.getElementById('checkapp'); 
+		div.innerHTML = div.innerHTML + getVersion() + ' - ' + timeString + '<br/>';
+		window.scrollTo(0,document.body.scrollHeight);
+		return;
+	}
+	
+	var continueChecking;
+	
+	function startCheck(){
+		continueChecking = setInterval(function (){ 
+			d = new Date(); 
+			addVersion(d.toLocaleTimeString())}, 1000);
+	}
+	
+	function stopCheck(){
+		clearInterval(continueChecking);
+	}
+	
+</script>
+</head>
+<body>
+	<H1>Continuously Ping Version Endpoint</H1>
+	<button
+	onclick="startCheck()"
+	 >Start</button><br/>
+	<div id="checkapp">
+	</div>
+	<button
+		onclick="stopCheck()"
+		>Stop</button>
+		
+	<button onclick="document.getElementById('checkapp').innerHTML=''">Clear</button>
+
+	
+</body>
+</html>
