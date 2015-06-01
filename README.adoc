@@ -18,16 +18,14 @@ The **cities-service** subproject is an example of a very simple but fully funct
 * link:http://cloud.spring.io/spring-cloud-connectors[Spring Cloud Connectors] is used to create the database connection from information exposed by the cloud environment
 
 **Key concepts:**
-https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-service/src/main/java/org/example/cities/Application.java
-https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities-service/src/main/java/org/example/cities/Application.java
 
 * Simple application configuration using Spring Boot
 ** link:cities/cities-service/src/main/java/org/example/cities/Application.java[Application.java]
 ** link:cities/cities-service/src/main/java/org/example/cities/WebConfiguration.java[WebConfiguration.java]
 * Data access using Spring Data JPA and exposing a REST API using Spring Data REST
-** link:cities/cities-service/src/main/java/org/example/cities/repositories/CityRepository.java[CityRepository.java]
+** link:cities/cities-service/src/main/java/org/example/cities/repo/CityRepository.java[CityRepository.java]
 * *To be developed*: Consuming a cloud data source using Spring Cloud Connectors
-** link:cities/cities-service/src/main/java/org/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
+** link:cities/cities-service/templates/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
 
 === cities-client
 
@@ -38,8 +36,6 @@ The client library uses https://github.com/Netflix/feign[Feign] to expose the mi
 The same Spring Cloud Connectors extension technique could be used to create lower-level REST API connection objects like Spring http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#rest-resttemplate[RestTemplate] or https://hc.apache.org/httpcomponents-client-ga[Apache HttpClient].
 
 **Key concepts:**
-https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-service/src/main/java/org/example/cities/Application.java
-https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities-service/src/main/java/org/example/cities/Application.java
 
 * A `ServiceInfo` class to model the connection information needed to access the REST API (just a URL in this example)
 ** link:cities/cities-client/src/main/java/com/example/cities/client/cloud/WebServiceInfo.java[WebServiceInfo.java]
@@ -58,8 +54,6 @@ https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/ci
 The **cities-ui** subproject is a web UI application that uses the client library to consume the microservice REST API. It is built using http://projects.spring.io/spring-boot[Spring Boot] and https://angularjs.org[AngularJS].
 
 **Key concepts:**
-https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-ui/src/main/java/org/example/cities/Application.java
-https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-ui/src/main/java/com/example/cities/Application.java
 
 * Simple application configuration using Spring Boot
 ** link:cities/cities-ui/src/main/java/com/example/cities/Application.java[Application.java]
