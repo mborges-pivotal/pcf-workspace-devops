@@ -20,12 +20,12 @@ The **cities-service** subproject is an example of a very simple but fully funct
 **Key concepts:**
 
 * Simple application configuration using Spring Boot
-** link:cities-service/src/main/java/com/example/cities/Application.java[Application.java]
-** link:cities-service/src/main/java/com/example/cities/WebConfiguration.java[WebConfiguration.java]
+** link:cities-service/src/main/java/org/example/cities/Application.java[Application.java]
+** link:cities-service/src/main/java/org/example/cities/WebConfiguration.java[WebConfiguration.java]
 * Data access using Spring Data JPA and exposing a REST API using Spring Data REST
-** link:cities-service/src/main/java/com/example/cities/repositories/CityRepository.java[CityRepository.java]
+** link:cities-service/src/main/java/org/example/cities/repositories/CityRepository.java[CityRepository.java]
 * *To be developed*: Consuming a cloud data source using Spring Cloud Connectors
-** link:cities-service/src/main/java/com/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
+** link:cities-service/src/main/java/org/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
 
 === cities-client
 
@@ -38,13 +38,13 @@ The same Spring Cloud Connectors extension technique could be used to create low
 **Key concepts:**
 
 * A `ServiceInfo` class to model the connection information needed to access the REST API (just a URL in this example)
-** link:cities-client/src/main/java/com/example/cities/client/cloud/WebServiceInfo.java[WebServiceInfo.java]
+** link:cities-client/src/main/java/org/example/cities/client/cloud/WebServiceInfo.java[WebServiceInfo.java]
 * A `ServiceInfoCreator` class to populate the `ServiceInfo` class from information exposed by Cloud Foundry
-** link:cities-client/src/main/java/com/example/cities/client/cloud/cloudfoundry/CitiesWebServiceInfoCreator.java[CitiesWebServiceInfoCreator.java]
+** link:cities-client/src/main/java/org/example/cities/client/cloud/cloudfoundry/CitiesWebServiceInfoCreator.java[CitiesWebServiceInfoCreator.java]
 * A `ServiceConnectionCreator` class to create the Feign repository from the information contained in the `ServiceInfo`
-** link:cities-client/src/main/java/com/example/cities/client/CityRepository.java[CityRepository.java]
-** link:cities-client/src/main/java/com/example/cities/client/CityRepositoryFactory.java[CityRepositoryFactory.java]
-** link:cities-client/src/main/java/com/example/cities/client/cloud/connector/CitiesRepositoryConnectionCreator.java[CitiesRepositoryConnectionCreator.java]
+** link:cities-client/src/main/java/org/example/cities/client/CityRepository.java[CityRepository.java]
+** link:cities-client/src/main/java/org/example/cities/client/CityRepositoryFactory.java[CityRepositoryFactory.java]
+** link:cities-client/src/main/java/org/example/cities/client/cloud/connector/CitiesRepositoryConnectionCreator.java[CitiesRepositoryConnectionCreator.java]
 * Registration of the `ServiceInfoCreator` and `ServiceConnectionCreator` to the Spring Cloud Connectors framework
 ** link:cities-client/src/main/resources/META-INF/services/org.springframework.cloud.cloudfoundry.CloudFoundryServiceInfoCreator[CloudFoundryServiceInfoCreator]
 ** link:cities-client/src/main/resources/META-INF/services/org.springframework.cloud.service.ServiceConnectorCreator[ServiceConnectorCreator]
@@ -56,11 +56,11 @@ The **cities-ui** subproject is a web UI application that uses the client librar
 **Key concepts:**
 
 * Simple application configuration using Spring Boot
-** link:cities-ui/src/main/java/com/example/cities/Application.java[Application.java]
+** link:cities-ui/src/main/java/org/example/cities/Application.java[Application.java]
 * Proxying calls from the AngularJS front-end to the repository backend with Spring MVC
-** link:cities-ui/src/main/java/com/example/cities/controller/CitiesController.java[CitiesController.java]
+** link:cities-ui/src/main/java/org/example/cities/controller/CitiesController.java[CitiesController.java]
 * Consuming the client library using Spring Cloud Connectors
-** link:cities-ui/src/main/java/com/example/cities/config/CloudConfiguration.java[CloudConfiguration.java]
+** link:cities-ui/src/main/java/org/example/cities/config/CloudConfiguration.java[CloudConfiguration.java]
 
 
 === Note on data import
