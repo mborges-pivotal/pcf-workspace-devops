@@ -22,12 +22,12 @@ https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/ci
 https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities-service/src/main/java/org/example/cities/Application.java
 
 * Simple application configuration using Spring Boot
-** link:cities-service/src/main/java/org/example/cities/Application.java[Application.java]
-** link:cities-service/src/main/java/org/example/cities/WebConfiguration.java[WebConfiguration.java]
+** link:cities/cities-service/src/main/java/org/example/cities/Application.java[Application.java]
+** link:cities/cities-service/src/main/java/org/example/cities/WebConfiguration.java[WebConfiguration.java]
 * Data access using Spring Data JPA and exposing a REST API using Spring Data REST
-** link:cities-service/src/main/java/org/example/cities/repositories/CityRepository.java[CityRepository.java]
+** link:cities/cities-service/src/main/java/org/example/cities/repositories/CityRepository.java[CityRepository.java]
 * *To be developed*: Consuming a cloud data source using Spring Cloud Connectors
-** link:cities-service/src/main/java/org/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
+** link:cities/cities-service/src/main/java/org/example/cities/config/CloudDataSourceConfig.java[CloudDataSourceConfig.java]
 
 === cities-client
 
@@ -38,15 +38,17 @@ The client library uses https://github.com/Netflix/feign[Feign] to expose the mi
 The same Spring Cloud Connectors extension technique could be used to create lower-level REST API connection objects like Spring http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#rest-resttemplate[RestTemplate] or https://hc.apache.org/httpcomponents-client-ga[Apache HttpClient].
 
 **Key concepts:**
+https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-service/src/main/java/org/example/cities/Application.java
+https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities-service/src/main/java/org/example/cities/Application.java
 
 * A `ServiceInfo` class to model the connection information needed to access the REST API (just a URL in this example)
-** link:cities/cities-client/src/main/java/org/example/cities/client/cloud/WebServiceInfo.java[WebServiceInfo.java]
+** link:cities/cities-client/src/main/java/com/example/cities/client/cloud/WebServiceInfo.java[WebServiceInfo.java]
 * A `ServiceInfoCreator` class to populate the `ServiceInfo` class from information exposed by Cloud Foundry
-** link:cities/cities-client/src/main/java/org/example/cities/client/cloud/cloudfoundry/CitiesWebServiceInfoCreator.java[CitiesWebServiceInfoCreator.java]
+** link:cities/cities-client/src/main/java/com/example/cities/client/cloud/cloudfoundry/CitiesWebServiceInfoCreator.java[CitiesWebServiceInfoCreator.java]
 * A `ServiceConnectionCreator` class to create the Feign repository from the information contained in the `ServiceInfo`
-** link:cities/cities-client/src/main/java/org/example/cities/client/CityRepository.java[CityRepository.java]
-** link:cities/cities-client/src/main/java/org/example/cities/client/CityRepositoryFactory.java[CityRepositoryFactory.java]
-** link:cities/cities-client/src/main/java/org/example/cities/client/cloud/connector/CitiesRepositoryConnectionCreator.java[CitiesRepositoryConnectionCreator.java]
+** link:cities/cities-client/src/main/java/com/example/cities/client/CityRepository.java[CityRepository.java]
+** link:cities/cities-client/src/main/java/com/example/cities/client/CityRepositoryFactory.java[CityRepositoryFactory.java]
+** link:cities/cities-client/src/main/java/com/example/cities/client/cloud/connector/CitiesRepositoryConnectionCreator.java[CitiesRepositoryConnectionCreator.java]
 * Registration of the `ServiceInfoCreator` and `ServiceConnectionCreator` to the Spring Cloud Connectors framework
 ** link:cities/cities-client/src/main/resources/META-INF/services/org.springframework.cloud.cloudfoundry.CloudFoundryServiceInfoCreator[CloudFoundryServiceInfoCreator]
 ** link:cities/cities-client/src/main/resources/META-INF/services/org.springframework.cloud.service.ServiceConnectorCreator[ServiceConnectorCreator]
@@ -56,13 +58,15 @@ The same Spring Cloud Connectors extension technique could be used to create low
 The **cities-ui** subproject is a web UI application that uses the client library to consume the microservice REST API. It is built using http://projects.spring.io/spring-boot[Spring Boot] and https://angularjs.org[AngularJS].
 
 **Key concepts:**
+https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-ui/src/main/java/org/example/cities/Application.java
+https://github.com/Pivotal-Field-Engineering/pcf-workspace-devops/blob/master/cities/cities-ui/src/main/java/com/example/cities/Application.java
 
 * Simple application configuration using Spring Boot
-** link:cities/cities-ui/src/main/java/org/example/cities/Application.java[Application.java]
+** link:cities/cities-ui/src/main/java/com/example/cities/Application.java[Application.java]
 * Proxying calls from the AngularJS front-end to the repository backend with Spring MVC
-** link:cities/cities-ui/src/main/java/org/example/cities/controller/CitiesController.java[CitiesController.java]
+** link:cities/cities-ui/src/main/java/com/example/cities/controller/CitiesController.java[CitiesController.java]
 * Consuming the client library using Spring Cloud Connectors
-** link:cities/cities-ui/src/main/java/org/example/cities/config/CloudConfiguration.java[CloudConfiguration.java]
+** link:cities/cities-ui/src/main/java/com/example/cities/config/CloudConfiguration.java[CloudConfiguration.java]
 
 
 === Note on data import
