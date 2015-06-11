@@ -9,6 +9,8 @@ local/
 
 .vagrant
 .DS_Store
+node_modules
+bower_components
 
 # Ignore Gradle GUI config
 gradle-app.setting

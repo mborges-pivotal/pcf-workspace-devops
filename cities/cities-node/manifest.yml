@@ -5,3 +5,4 @@ applications:
   memory: 512M
   instances: 1
   timeout: 60
+  host: cities-node-${random-word}
