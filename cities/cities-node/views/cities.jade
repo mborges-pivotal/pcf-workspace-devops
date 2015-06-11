@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    div(ng-controller='CitiesController', ng-init='init()')
+      h1 Postal Codes
+      form.form-horizontal(name='searchForm', role='form')
+        .form-group
+          label.control-label.col-md-2(for='name') City Name
+          .col-md-5
+            input#name.form-control(type='text', name='name', ng-model='searchCity.name')
+          .col-md-2
+            button.btn.btn-primary.btn-md.active(ng-disabled='!(searchCity.name)', ng-click='search()') Search
+            button.btn.btn-warning.btn-md.active(ng-click='clearSearch()') Clear
+          label.control-label.col-md-2(for='pageSize') Items per page
+          .col-md-1
+            select#pageSize.form-control(name='pageSize', ng-model='itemsPerPage', ng-options='option for option in itemsPerPageOptions', ng-change='refresh()')
+      table.table.table-striped.table-hover
+        thead
+          th Postal Code
+          th City
+          th County
+          th State Code
+          th Map
+        tbody
+          tr(ng-repeat='city in pagedCities.content')
+            td(width='15%') {{city.postalCode}}
+            td(width='30%') {{city.name}}
+            td(width='30%') {{city.county}}
+            td(width='10%') {{city.stateCode}}
+            td(width='15%')
+              a(target='_blank', href='http://maps.google.com/maps/?q={{city.latitude}},{{city.longitude}}')
+                span.glyphicon.glyphicon-map-marker
+      .col-md-12.text-center.center-block
+        p
+          | Displaying items
+          strong {{firstItemIndex}}
+          |  through
+          strong {{lastItemIndex}}
+          |  of
+          strong {{pagedCities.page.totalElements}}
+      .col-md-12.text-center.center-block
+        pagination(ng-model='pageNumber', ng-change='refresh()', total-items='pagedCities.page.totalElements', items-per-page='pagedCities.page.size', boundary-links='true', max-size='maxPageLinks', previous-text='‹', next-text='›', first-text='«', last-text='»')
