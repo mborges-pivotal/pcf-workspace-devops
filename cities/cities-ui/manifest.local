@@ -1,0 +1,10 @@
+---
+applications:
+- name: rj-cities-ui
+  memory: 512M
+  instances: 1
+  path: build/libs/cities-ui.jar
+  services: [ rj-cities-ws ]
+  env:
+    SPRING_PROFILES_ACTIVE: local
+    VERSION: 1001
