@@ -5,4 +5,3 @@ applications:
   memory: 512M
   instances: 1
   timeout: 60
-  host: drivers-node-${random-word}
