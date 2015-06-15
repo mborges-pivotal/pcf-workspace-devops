@@ -2,6 +2,7 @@ buildscript {
     ext {
         springBootVersion = '1.1.6.RELEASE'
         springCloudVersion = '1.1.0.RELEASE'
+        postgresDriverVersion = '9.0-801.jdbc4'
     }
 
     repositories {
@@ -29,6 +30,32 @@ subprojects {
         mavenCentral()
     }
 }
+
+
+project(':cities-hello') {
+    apply plugin: 'spring-boot'
+
+    jar {
+        baseName = 'cities-hello'
+        version = '0.0.1-SNAPSHOT'
+    }
+
+    dependencies {
+        // Spring
+        compile("org.springframework.boot:spring-boot-starter-web")
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.cloud:spring-cloud-cloudfoundry-connector:${springCloudVersion}")
+        compile("org.springframework.cloud:spring-cloud-heroku-connector:${springCloudVersion}")
+        compile("org.springframework.cloud:spring-cloud-spring-service-connector:${springCloudVersion}")
+
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile("junit:junit")
+
+        versionManagement 'io.spring.platform:platform-versions:1.0.2.RELEASE@properties'
+    }
+
+}
+
 
 project(':cities-service') {
     apply plugin: 'spring-boot'
